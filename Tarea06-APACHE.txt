@@ -1,0 +1,50 @@
+##Apache
+
+1- mkdir repositorios
+   git clone https://github.com/TecnologoInformatico/AdmInf-web.git
+
+2- sudo apt update
+
+3- sudo apt install apache2
+
+4- mkdir -p /var/www/fbauza
+
+5- sudo chowm ubuntu /var/www/fbauza
+
+6- /Paso-1/
+   cd /etc/apache2/sites-available
+   cp 000-default.conf VirtualHost.conf
+
+   En esta parte editamos el nuevo conf en este caso "VirtualHost"
+   y dentro descomentamos la parte de ServerName y modificamos 
+   ServerName, ServerAdmin y DocumentRoot de tal forma que nos quede
+   de la siguiente manera:
+   			  ServerName fbauza.tecnologoinformatico.com
+   			  ServerAdmin fbauza2014@gmail.com
+   			  DocumentRoot /var/www/fbauza
+   
+   sudo a2ensite VirtualHost.conf
+
+   
+7- cd /etc
+   nano hosts
+   
+   Aqui editamos el archivo hosts de tal manera que coloquemos la 
+   ip de la maquina en la que esta corriendo el servidor en este 
+   caso la ip de la maquina virtual en la que tenemos corriendo
+   el apache que es "127.0.0.1" y seguido el nombre de dominio
+   de nuestra instancia ubuntu que tenemos en oracle que en este
+   caso es "fbauza.tecnologoinformatico.com"
+   
+8- sudo systemctl reload apache2
+
+9- cd ~/
+   cp -r repositorios/. /var/www/fbauza
+
+10- sudo systemctl status apache2
+    
+    Con este comando verificamos si el estado del servidor para
+    verificar si esta activo o no.
+
+11- ServerName: fbauza.tecnologoinformatico.com
+    ip: 27.0.0.1   
